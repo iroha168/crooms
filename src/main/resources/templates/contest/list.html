@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<head
+	th:replace="contest/contest_header :: common_header(~{::title},~{::link})">
+<title>Awesome - Main</title>
+<link rel="stylesheet" media="all" th:href="@{/css/problem.css}" />
+</head>
+<body>
+	<li>
+		<table>
+			<th>コンテスト名</th>
+			<th>開始日時</th>
+			<table />
+			</li>
+</body>
+<a th:href="@{register}">コンテスト登録をする</a>
+</html>

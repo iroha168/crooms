@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" media="all" th:href="@{/css/problem.css}"/>
+	<title></title>
+</head>
+<body>
+<li>
+	<table>
+		<th>問題番号</th><th>選択</th>
+		<tbody class="problem_list" th:each="problem: ${problems}">
+			<tr><td><a th:href="@{''+${problem.url}}" th:text="${problem.name}"></a></td>
+			<td><input type="checkbox" name="problemCheck"/></td></tr>
+		</tbody>
+	<table/>
+</li>
+</body>
+</html>

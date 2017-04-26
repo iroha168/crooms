@@ -1,0 +1,6 @@
+tbody:nth-child(odd){
+	background-color: #d3d3d3;
+}
+tbody:nth-child(even) {
+	background-color: #eeeeee;
+}

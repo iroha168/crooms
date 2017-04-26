@@ -1,0 +1,11 @@
+<!-- base.html -->
+<!--/* common_header というfragment を定義。引数の title, links は fragment expressionsである */-->
+<head th:fragment="common_header(title,links)">
+  <!-- 各Viewのタイトル -->
+  <title th:replace="${title}">The awesome application</title>
+
+  <!-- どのViewでも必ず読み込むファイル -->
+
+  <!-- 各View固有で読み込むリンク -->
+  <th:block th:replace="${links}" />
+</head>
