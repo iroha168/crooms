@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8"/>
+<head th:replace="common/head :: head(~{::title},~{::link})">
 	<link rel="stylesheet" media="all" th:href="@{/css/problem.css}"/>
+	<meta charset="UTF-8"/>
 	<title></title>
 </head>
 <body>
-<li>
-	<table>
-		<th>問題番号</th><th>選択</th>
-		<tbody class="problem_list" th:each="problem: ${problems}">
-			<tr><td><a th:href="@{''+${problem.url}}" th:text="${problem.name}"></a></td>
-			<td><input type="checkbox" name="problemCheck"/></td></tr>
-		</tbody>
-	<table/>
-</li>
+<div th:replace="common/header :: header()"></div>
+	<div th:class="container">
+		<form th:action = "@{../contest/regsiter}" th:object="${selectedProblemsForm}" method="POST">
+			<table>
+				<tr><th>問題番号</th><th>選択</th></tr>
+					<tbody class="problem_list" th:each="problem: ${form.problems}">
+					<tr><td><a th:href="@{''+${problem.url}}" th:text="${problem.name}"></a></td>
+    	   			<td><input type=checkbox th:field="${form.ckId}" th:value="${problem.url}"/></td><tr>
+ 				</tbody>
+			</table>
+		</form>
+	</div>
+<div th:replace="common/footer :: footer()"></div>
 </body>
 </html>

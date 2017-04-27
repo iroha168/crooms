@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="common/head :: head(~{::title},~{::link})">
+	<link rel="stylesheet" media="all" th:href="@{/css/contest.css}" />
 	<meta charset="UTF-8"/>
 	<title></title>
 </head>
 <body>
-	<form th:action=@{"contest/save"} th:object="${contestForm}" method="POST">
-		<input type=text th:field="*{name}">
-		<input type=datetime th:field="*{date}">
-		<input type=number th:field="*{duration}">
-	</form>
+<div th:replace="common/header :: header()"></div>
+	<div th:class="container">
+		<div th:class="contents">
+			<form th:action=@{"contest/save"} th:object="${contestForm}" method="POST">
+				<label th:for="*{name}">コンテスト名</label>
+				<input type=text th:field="*{name}">
+				<br/>
+				<label th:for="*{date}">開催日時</label>
+				<input type=datetime th:field="*{date}">
+				<br/>
+				<label th:for="*{duration}">制限時間</label>
+				<input type=number th:field="*{duration}">
+			</form>
+		</div>
+	</div>
+	<div th:replace="common/footer :: footer()"></div>
+	<a th:href="@{../problem/select}">問題を選択する</a>
 </body>
 </html>

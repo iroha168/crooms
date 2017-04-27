@@ -16,7 +16,7 @@ public class CodeforcesProblems {
 	private String title;
 
 	private String html;
-
+	
 	public Integer getId() {
 		return id;
 	}

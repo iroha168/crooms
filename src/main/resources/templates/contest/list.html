@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title></title>
-</head>
-<head
-	th:replace="contest/contest_header :: common_header(~{::title},~{::link})">
-<title>Awesome - Main</title>
-<link rel="stylesheet" media="all" th:href="@{/css/problem.css}" />
+<head th:replace="common/head :: head(~{::title},~{::link})">
+	<link rel="stylesheet" media="all" th:href="@{/css/contest.css}" />
+	<meta charset="UTF-8"/>
+	<title></title>
 </head>
 <body>
-	<li>
-		<table>
-			<th>コンテスト名</th>
-			<th>開始日時</th>
-			<table />
-			</li>
+	<div th:class="container">
+		<div th:replace="common/header :: header()"></div>
+			<table>
+				<tr><th>コンテスト名</th><th>開始日時</th></tr>
+			</table>
+		<a th:href="@{register}">コンテスト登録をする</a>
+	</div>
+	<div th:replace="common/footer :: footer()"></div>
+	<a th:href=@{"problem/select"}>問題を選択する</a>
 </body>
-<a th:href="@{register}">コンテスト登録をする</a>
 </html>
