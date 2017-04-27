@@ -22,6 +22,11 @@
 		</div>
 	</div>
 	<div th:replace="common/footer :: footer()"></div>
+	<table>
+	<tbody th:each="id: ${ids}">
+		<tr><td th:text="${id}"></td></tr>
+	</tbody>
+	</table>
 	<a th:href="@{../problem/select}">問題を選択する</a>
 </body>
 </html>
