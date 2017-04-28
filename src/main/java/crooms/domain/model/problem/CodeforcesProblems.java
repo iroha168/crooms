@@ -17,6 +17,26 @@ public class CodeforcesProblems {
 
 	private String html;
 	
+	private String body;
+
+	private String problemIndex;
+	
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	public String getProblemIndex() {
+		return problemIndex;
+	}
+
+	public void setProblemIndex(String problemIndex) {
+		this.problemIndex = problemIndex;
+	}
+
 	public Integer getId() {
 		return id;
 	}

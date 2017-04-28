@@ -10,10 +10,11 @@
 	<div th:class="container">
 		<form th:action = "@{../contest/register}" th:object="${selectedProblemsForm}" method="POST">
 			<table>
-				<tr><th>問題番号</th><th>選択</th></tr>
+				<tr><th>問題番号</th><th>タイトル</th><th>選択</th></tr>
 					<tbody class="problem_list" th:each="problem: ${form.problems}">
 					<tr>
 					<td><a th:href="@{''+${problem.url}}" th:text="${problem.name}"></a></td>
+					<td th:text="${problem.title}"></td>
     	   			<td><input type=checkbox th:field="${form.ckId}" th:value="${problem.url}"/></td>
     	   			<tr>
  				</tbody>
