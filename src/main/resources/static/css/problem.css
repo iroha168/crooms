@@ -1,7 +1,52 @@
-tbody:nth-child(odd){
+table tr:nth-child(odd){
 	background-color: #d3d3d3;
 }
-tbody:nth-child(even) {
+table tr:nth-child(even) {
 	background-color: #eeeeee;
 }
+.problem_list {
+	padding: 0 0 0 10%;
+}
 
+tr{
+}
+
+th.tittle{
+	width:500px;
+}
+.pager {
+    overflow: hidden;
+}
+.pager{
+	padding: 0 0 0 20px;
+} 
+.pager ul {
+    list-style: none;
+    position: relative;
+    float: left;
+}
+ 
+.pager ul li {
+    margin: 0 1px;
+    position: relative;
+    float: left;
+}
+ 
+.pager ul li span,
+.pager ul li a {
+    display: block;
+    font-size: 16px;
+    padding: 0.6em 1em;
+    border-radius: 3px;
+}
+ 
+.pager ul li a {
+    background: #EEE;
+    color: #000;
+    text-decoration: none;
+}
+ 
+.pager ul li a:hover {
+    background: #333;
+    color: #FFF;
+}

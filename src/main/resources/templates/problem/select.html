@@ -9,19 +9,34 @@
 <div th:replace="common/header :: header()"></div>
 	<div th:class="container">
 		<form th:action = "@{../contest/register}" th:object="${selectedProblemsForm}" method="POST">
+		<div th:class="problem_list">
 			<table>
-				<tr><th>問題番号</th><th>タイトル</th><th>選択</th></tr>
-					<tbody class="problem_list" th:each="problem: ${form.problems}">
-					<tr>
+				<tr><th>問題番号</th><th th:class="tittle">タイトル</th><th>選択</th></tr>
+				<tbody>
+					<tr class="problem_list" th:each="problem: ${form.problems}">
 					<td><a th:href="@{''+${problem.url}}" th:text="${problem.name}"></a></td>
 					<td th:text="${problem.title}"></td>
     	   			<td><input type=checkbox th:field="${form.ckId}" th:value="${problem.url}"/></td>
     	   			<tr>
  				</tbody>
 			</table>
+			<div class="pager">
+		    <ul>
+        		<li><a th:if="${no}>1" th:href="${no}-1">prev</a></li>
+        		<li><a th:if="${no}>2" th:href="${no}-2" th:text="${no}-2"></a></li>
+        		<li><a th:if="${no}>1" th:href="${no}-1" th:text="${no}-1"></a></li>
+        		<li th:class="current"><span th:text="${no}"></span></li>
+        		<li><a th:if="${no}<170" th:href="${no}+1" th:text="${no}+1"></a></li>
+        		<li><span>...</span></li>
+        		<li><a th:href="${lastPage}" th:text="${lastPage}"></a></li>
+        		<li><a th:if="${no}<170" th:href="${no}+1">next</a></li>
+    		</ul>
+			</div>
+		</div>
 			<input type="submit" value="決定">
 		</form>
 	</div>
+	
 <div th:replace="common/footer :: footer()"></div>
 </body>
 </html>
