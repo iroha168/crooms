@@ -18,7 +18,7 @@ function recheck(){
 }
 
 function deleteClick(){
-	document.cookie = "problems=; max-age=0";
+	expireCookieOfProblem();
 	empty();
 }
 
@@ -30,7 +30,20 @@ function ckClick(name, title,checked){
 	}
 }
 
+function expireCookieOfProblem(){
+	document.cookie = "problems=; max-age=0";
+}
+
 function unchecked(name, title){
+	for(var i = 0; i < cookieData.name.length; i++){
+		if(cookieData.name[i] == name){
+			cookieData.name.splice(i,1);
+			cookieData.title.splice(i,1);
+			break;
+		}
+	}
+	expireCookieOfProblem();
+	document.cookie = 'problems='+JSON.stringify(cookieData);
 	$(".selected ul ."+name).remove();
 }
 
