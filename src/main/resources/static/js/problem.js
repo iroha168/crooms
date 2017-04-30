@@ -2,11 +2,30 @@ $(function(){
 	writeSelections();
 	$(".cb").on("change", function(){
 		var name = $(this).attr("name").split(",");
-		ckClick(name[0], name[1]);
+		ckClick(name[0], name[1], $(this).prop("checked"));
+	});
+	$(".delete_all").on("click", function(){
+		deleteClick();
 	});
 });
 
-function ckClick(name, title){
+function deleteClick(){
+	empty();
+}
+
+function ckClick(name, title,checked){
+	if(checked){
+		check(name, title);
+	}else{
+		unchecked(name, title);		
+	}
+}
+
+function unchecked(name, title){
+	$(".selected ul ."+name).remove();
+}
+
+function check(name, title){
 	var content = [name+ ": "+ title];
 	var obj = getJsonObject(name, title);
 	var jsonString= JSON.stringify(obj);	
@@ -21,10 +40,15 @@ function ckClick(name, title){
 function writeSelections(){
 	var data = parseCookie();
 	len = data.name.length;
-	$(".selected ul").empty();
+	empty();
 	for(var i = 0; i < len; i++){
-		$(".selected ul").append("<li>"+data.name[i]+": "+ data.title[i]+"</li>");
+		$(".selected ul").append("<li class="+data.name[i]+">"+data.name[i]+": "+ data.title[i]+"</li>");
 	}
+}
+
+function empty(){
+	document.cookie = "problems=; max-age=0";
+	$(".selected ul").empty();
 }
 
 function parseCookie(){
@@ -39,18 +63,20 @@ function parseCookie(){
         continue;
       }
     }
-    cookieValue = cookieValue == "" ? getJsonObject("","") : JSON.parse(cookieValue);
+    cookieValue = cookieValue == "" ? getEmptyJsonObject() : JSON.parse(cookieValue);
     return cookieValue;
+}
+
+function getEmptyJsonObject(name, title){
+	var obj = new Object();
+	obj.name = [];
+	obj.title  = [];		
+	return obj;
 }
 
 function getJsonObject(name, title){
 	var obj = new Object();
-	if(name !=""){
-		obj.name = [name];
-		obj.title  = [title];
-	}else{
-		obj.name = [];
-		obj.title  = [];		
-	}
+	obj.name = [name];
+	obj.title  = [title];
 	return obj;
 }

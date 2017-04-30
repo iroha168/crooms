@@ -67,4 +67,8 @@ th.tittle{
     color: #FFF;
 }
 
+.delete_all{
+	position:absolute;
+	left: 1370px;
+}
 
