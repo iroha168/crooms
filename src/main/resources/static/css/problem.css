@@ -7,6 +7,22 @@ table tr:nth-child(even) {
 .problem_list {
 	padding: 0 0 0 10%;
 }
+form{
+	position:absolute;
+	top: 50px;
+	left: 80px;
+	
+}
+.selected {
+	position:absolute;
+	top: 50px;
+	left: 800px;
+	width: 500px;
+	height: 600px;
+	margin: 0 0 0 50px;
+	border-style: groove;
+	border-width: 2px;
+}
 
 tr{
 }
@@ -50,3 +66,5 @@ th.tittle{
     background: #333;
     color: #FFF;
 }
+
+
