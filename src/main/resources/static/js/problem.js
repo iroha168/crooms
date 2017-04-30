@@ -1,5 +1,7 @@
+var cookieData;
 $(function(){
 	writeSelections();
+	recheck();
 	$(".cb").on("change", function(){
 		var name = $(this).attr("name").split(",");
 		ckClick(name[0], name[1], $(this).prop("checked"));
@@ -9,7 +11,14 @@ $(function(){
 	});
 });
 
+function recheck(){
+	for(var i = 0; i < cookieData.name.length; i++){
+		$("[name^='"+cookieData.name[i]+"']").prop('checked',true);
+	}
+}
+
 function deleteClick(){
+	document.cookie = "problems=; max-age=0";
 	empty();
 }
 
@@ -38,16 +47,14 @@ function check(name, title){
 }
 
 function writeSelections(){
-	var data = parseCookie();
-	len = data.name.length;
+	cookieData = parseCookie();
 	empty();
-	for(var i = 0; i < len; i++){
-		$(".selected ul").append("<li class="+data.name[i]+">"+data.name[i]+": "+ data.title[i]+"</li>");
+	for(var i = 0; i < cookieData.name.length; i++){
+		$(".selected ul").append("<li class="+cookieData.name[i]+">"+cookieData.name[i]+": "+ cookieData.title[i]+"</li>");
 	}
 }
 
 function empty(){
-	document.cookie = "problems=; max-age=0";
 	$(".selected ul").empty();
 }
 
