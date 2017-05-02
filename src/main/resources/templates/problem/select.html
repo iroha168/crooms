@@ -8,7 +8,7 @@
 <body>
 <div th:replace="common/header :: header()"></div>
 	<div th:class="container">
-		<form th:action = "@{../contest/register}" th:object="${selectedProblemsForm}" method="POST">
+		<form th:action = "@{../../contest/register}" th:object="${selectedProblemsForm}" method="POST">
 		<div th:class="problem_list">
 			<table>
 				<tr><th>問題番号</th><th th:class="tittle">タイトル</th><th>選択</th></tr>
