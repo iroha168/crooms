@@ -1,7 +1,9 @@
 var cookieData;
 $(function(){
-	writeSelections();
-	recheck();
+	if(cookieData != null){
+		writeSelections();
+		recheck();
+	}
 	$(".cb").on("change", function(){
 		var name = $(this).attr("name").split(",");
 		ckClick(name[0], name[1], $(this).prop("checked"));
@@ -9,7 +11,14 @@ $(function(){
 	$(".delete_all").on("click", function(){
 		deleteClick();
 	});
+	$(".save").on("click",function(){
+		save();
+	});
 });
+
+function save(){
+	document.cookie = "problems="+JSON.stringify(parseCookie()).replace(/[{}\[\]"]/g,"").replace(/[, ]/g,"_")+";path=/";
+}
 
 function recheck(){
 	for(var i = 0; i < cookieData.name.length; i++){
@@ -43,19 +52,15 @@ function unchecked(name, title){
 		}
 	}
 	expireCookieOfProblem();
-	document.cookie = 'problems='+JSON.stringify(cookieData);
+	document.cookie = 'problems='+JSON.stringify(cookieData)+';path=/';
 	$(".selected ul ."+name).remove();
 }
 
 function check(name, title){
-	var content = [name+ ": "+ title];
-	var obj = getJsonObject(name, title);
-	var jsonString= JSON.stringify(obj);	
-	var cookie = document.cookie;
 	var data = parseCookie();
 	data.name.push(name);
 	data.title.push(title);
-	document.cookie = 'problems='+JSON.stringify(data);
+	document.cookie = 'problems='+JSON.stringify(data)+';path=/';
 	writeSelections();
 }
 

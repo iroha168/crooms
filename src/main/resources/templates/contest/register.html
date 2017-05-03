@@ -9,7 +9,7 @@
 <div th:replace="common/header :: header()"></div>
 	<div th:class="container">
 		<div th:class="contents">
-			<form th:action=@{"contest/save"} th:object="${contestForm}" method="POST">
+			<form th:action=@{list} th:object="${contestForm}" method="POST">
 				<label th:for="*{name}">コンテスト名</label>
 				<input type=text th:field="*{name}">
 				<br/>
@@ -18,6 +18,7 @@
 				<br/>
 				<label th:for="*{duration}">制限時間</label>
 				<input type=number th:field="*{duration}">
+				<input type=submit th:class="save">
 			</form>
 		</div>
 	</div>
