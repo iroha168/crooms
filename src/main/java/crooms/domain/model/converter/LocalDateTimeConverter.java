@@ -1,4 +1,4 @@
-package crooms.domain.model.problem.converter;
+package crooms.domain.model.converter;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -14,6 +14,7 @@ public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime,
 
 	@Override
 	public LocalDateTime convertToEntityAttribute(Timestamp value) {
-		return value == null ? null : value.toLocalDateTime();
+		LocalDateTime result = value == null ? null : value.toLocalDateTime();
+		return result;
 	}
 }

@@ -1,0 +1,16 @@
+
+.delete_all{
+	position:absolute;
+	left: 1370px;
+}
+
+.selected {
+	position:absolute;
+	top: 50px;
+	left: 300px;
+	width: 500px;
+	height: 600px;
+	margin: 0 0 0 50px;
+	border-style: groove;
+	border-width: 2px;
+}

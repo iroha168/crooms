@@ -17,7 +17,11 @@ $(function(){
 });
 
 function save(){
-	document.cookie = "problems="+JSON.stringify(parseCookie()).replace(/[{}\[\]"]/g,"").replace(/[, ]/g,"_")+";path=/";
+	
+	var cookie = "problems="+JSON.stringify(parseCookie()).replace(/[{}\[\]"]/g,"").replace(/[ ]/g,"_").replace(/[,]/g,"__");
+	var index = cookie.replace("__title");
+	cookie =cookie.substring(0,index).replace("name:","");
+	document.cookie = cookie+";path=/";
 }
 
 function recheck(){

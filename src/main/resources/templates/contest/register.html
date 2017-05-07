@@ -13,21 +13,21 @@
 				<label th:for="*{name}">コンテスト名</label>
 				<input type=text th:field="*{name}">
 				<br/>
-				<label th:for="*{date}">開催日時</label>
-				<input type=datetime th:field="*{date}">
+				<label th:for="*{startTime}">開催日時</label>
+				<input type=datetime th:field="*{startTime}">
 				<br/>
 				<label th:for="*{duration}">制限時間</label>
-				<input type=number th:field="*{duration}">
+				<input type=time th:field="*{duration}">
 				<input type=submit th:class="save">
 			</form>
 		</div>
 	</div>
-	<div th:replace="common/footer :: footer()"></div>
 	<table>
 	<tbody th:each="id: ${ids}">
 		<tr><td th:text="${id}"></td></tr>
 	</tbody>
 	</table>
 	<a th:href="@{../problem/select}">問題を選択する</a>
+	<div th:replace="common/footer :: footer()"></div>
 </body>
 </html>

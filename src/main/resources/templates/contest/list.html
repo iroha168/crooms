@@ -15,5 +15,10 @@
 	</div>
 	<div th:replace="common/footer :: footer()"></div>
 	<a th:href=@{"problem/select"}>問題を選択する</a>
+	<div>
+		<ul th:each="contest : ${contests}">
+			<li><a th:href="${contest.id}" th:text="${contest.name}"></a></li>
+		</ul>
+	</div>
 </body>
 </html>

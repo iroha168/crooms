@@ -1,4 +1,4 @@
-package crooms.domain.model.problem.converter;
+package crooms.domain.model.converter;
 
 import java.sql.Time;
 import java.time.LocalTime;

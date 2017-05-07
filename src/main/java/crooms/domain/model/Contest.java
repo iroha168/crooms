@@ -1,20 +1,49 @@
-package crooms.app.contest;
+package crooms.domain.model;
 
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.*;
 
-public class ContestForm {
+
+@Entity
+public class Contest {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	
 	private String name;
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	private LocalDateTime startTime;
 	
-	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime duration;
+
+	@OneToMany
+	private List<ContestProblem> contestProblems; 
+	
+	public List<ContestProblem> getContestProblems() {
+		return contestProblems;
+	}
+
+
+
+	public void setContestProblems(List<ContestProblem> contestProblems) {
+		this.contestProblems = contestProblems;
+	}
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -39,6 +68,4 @@ public class ContestForm {
 	public void setDuration(LocalTime duration) {
 		this.duration = duration;
 	}
-
-
 }

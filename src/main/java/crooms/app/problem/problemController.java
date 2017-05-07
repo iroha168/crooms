@@ -13,9 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import crooms.domain.model.problem.CodeforcesProblems;
+import crooms.domain.model.CodeforcesProblems;
 import crooms.domain.repository.problem.ProblemRepository;
-import crooms.domain.service.Problem.ProblemService;
+import crooms.domain.service.problem.ProblemService;
 
 @Controller
 @RequestMapping("/problem")

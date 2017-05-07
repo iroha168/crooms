@@ -2,9 +2,10 @@ package crooms.app.problem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
-import crooms.domain.model.problem.CodeforcesProblems;
+import crooms.domain.model.CodeforcesProblems;
+
+import java.util.Collections;
 
 public class SelectedProblemsForm {
 	private List<String> ckId;
