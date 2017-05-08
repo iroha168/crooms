@@ -62,13 +62,17 @@ public class ContestController {
 		Contest contest = new Contest();
 		BeanUtils.copyProperties(contestForm, contest);
 		contestRepository.save(contest);
-		String[] names = problems.split("__");
+		String[] splits = problems.split("◆");
+		String[] names = splits[0].split("∇");
+		String[] titles = splits[1].split("∇");
 		List<CodeforcesProblems> problemList = new ArrayList<>();
-		for (String name : names) {
+		for (int i = 0; i < names.length; i++) {
 			ContestProblem contestProblem = new ContestProblem();
-			CodeforcesProblems selectedProblem = problemService.findByName(name);
-			contestProblem.setProblem_url(selectedProblem.getUrl());
-			contestProblem.setProblem_body(selectedProblem.getBody());
+			CodeforcesProblems selectedProblem = problemService.findByName(names[i]);
+			contestProblem.setProblemName(names[i]);
+			contestProblem.setProblemTitle(titles[i]);
+			contestProblem.setProblemUrl(selectedProblem.getUrl());
+			contestProblem.setProblemBody(selectedProblem.getBody());
 			contestProblem.setContest(contest);
 			contestProblemRepository.save(contestProblem);
 		}
@@ -97,5 +101,10 @@ public class ContestController {
 		model.addAttribute("contest", contest);
 		model.addAttribute("problems", contestProblem);
 		return "contest/room";
+	}
+	
+	@RequestMapping(path = "/{contestId}/{problemTitle}", method = RequestMethod.GET)
+	public String eachProblem(){
+		return "problem/content";
 	}
 }

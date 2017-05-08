@@ -12,10 +12,46 @@ public class ContestProblem {
 	private Contest contest;
 
 
-	private String problem_url;
+	private String problemName;
 	
-	private String problem_body;
+	private String problemTitle;
 	
+	private String problemUrl;
+	
+	private String problemBody;
+	
+	public String getProblemName() {
+		return problemName;
+	}
+
+	public void setProblemName(String problemName) {
+		this.problemName = problemName;
+	}
+
+	public String getProblemTitle() {
+		return problemTitle;
+	}
+
+	public void setProblemTitle(String problemTitle) {
+		this.problemTitle = problemTitle;
+	}
+
+	public String getProblemUrl() {
+		return problemUrl;
+	}
+
+	public void setProblemUrl(String problemUrl) {
+		this.problemUrl = problemUrl;
+	}
+
+	public String getProblemBody() {
+		return problemBody;
+	}
+
+	public void setProblemBody(String problemBody) {
+		this.problemBody = problemBody;
+	}
+
 	public Contest getContest() {
 		return contest;
 	}
@@ -34,18 +70,18 @@ public class ContestProblem {
 
 
 	public String getProblem_url() {
-		return problem_url;
+		return problemUrl;
 	}
 
 	public void setProblem_url(String problem_url) {
-		this.problem_url = problem_url;
+		this.problemUrl = problem_url;
 	}
 
 	public String getProblem_body() {
-		return problem_body;
+		return problemBody;
 	}
 
 	public void setProblem_body(String problem_body) {
-		this.problem_body = problem_body;
+		this.problemBody = problem_body;
 	}
 }

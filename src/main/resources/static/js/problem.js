@@ -18,9 +18,9 @@ $(function(){
 
 function save(){
 	
-	var cookie = "problems="+JSON.stringify(parseCookie()).replace(/[{}\[\]"]/g,"").replace(/[ ]/g,"_").replace(/[,]/g,"__");
-	var index = cookie.replace("__title");
-	cookie =cookie.substring(0,index).replace("name:","");
+	var cookie = "problems="+JSON.stringify(parseCookie()).replace(/[{}\[\]"]/g,"").replace(/[ ]/g,"_").replace(/[,]/g,"∇");
+	cookie = cookie.replace("∇title:","◆");
+	cookie =cookie.replace("name:","");
 	document.cookie = cookie+";path=/";
 }
 
