@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import crooms.domain.model.User;
+
 
 @Entity
 public class Contest {
@@ -27,20 +29,26 @@ public class Contest {
 		return contestProblems;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public void setContestProblems(List<ContestProblem> contestProblems) {
 		this.contestProblems = contestProblems;
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
 
-	
-	
 	public void setId(Integer id) {
 		this.id = id;
 	}

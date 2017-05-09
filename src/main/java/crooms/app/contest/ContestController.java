@@ -103,8 +103,10 @@ public class ContestController {
 		return "contest/room";
 	}
 	
-	@RequestMapping(path = "/{contestId}/{problemTitle}", method = RequestMethod.GET)
-	public String eachProblem(){
+	@RequestMapping(path = "/{contestId}/{problemName}", method = RequestMethod.GET)
+	public String eachProblem(@PathVariable("problemName") String name, Model model){
+		CodeforcesProblems problem = problemService.findByName(name);
+		model.addAttribute("problem", problem);
 		return "problem/content";
 	}
 }

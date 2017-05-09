@@ -39,6 +39,4 @@ public class ContestForm {
 	public void setDuration(LocalTime duration) {
 		this.duration = duration;
 	}
-
-
 }

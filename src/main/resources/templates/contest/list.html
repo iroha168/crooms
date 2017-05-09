@@ -16,9 +16,18 @@
 	<div th:replace="common/footer :: footer()"></div>
 	<a th:href=@{"problem/select"}>問題を選択する</a>
 	<div>
-		<ul th:each="contest : ${contests}">
-			<li><a th:href="${contest.id}" th:text="${contest.name}"></a></li>
-		</ul>
+	<table>
+		<tr th:each="contest : ${contests}">
+			<td><a th:href="${contest.id}" th:text="${contest.name}"></a></td>
+			<td>
+				<form th:action="@{/contest/list}"
+					  method="post"
+					  sec:authorize="${hasRole('ADMIN') or #vars.user.userId == #vars.reservation.user.userId}">
+					<input type="submit" name="cancel" value="取消" />
+				</form>
+			</td>
+		</tr>
+	</table>
 	</div>
 </body>
 </html>
